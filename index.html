@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AKGS Kalari Sangam | Admission</title>
+
+<style>
+:root {
+  --navy: #123f32;
+  --gold: #d9a441;
+  --cream: #f8f4e8;
+  --text: #263444;
+  --muted: #718096;
+  --border: #dce2e8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text);
+  background: #eef2e9;
+  line-height: 1.6;
+}
+
+.hero {
+  background: var(--navy);
+  color: white;
+  padding: 42px 20px 65px;
+  text-align: center;
+  border-bottom: 5px solid var(--gold);
+}
+
+.brand-logo {
+  display: block;
+  width: clamp(112px, 18vw, 170px);
+  height: auto;
+  margin: 0 auto 18px;
+  border-radius: 50%;
+  box-shadow: 0 5px 20px #071f1838;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(25px, 4vw, 38px);
+  letter-spacing: 1.5px;
+}
+
+.hero p {
+  margin: 8px 0 0;
+  color: #d8e0e8;
+}
+
+.hero .tag {
+  color: var(--gold);
+  font-size: 12px;
+  letter-spacing: 3px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.container {
+  width: min(900px, calc(100% - 28px));
+  margin: -30px auto 50px;
+  position: relative;
+}
+
+.form-card {
+  background: var(--cream);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 12px 45px #15243616;
+}
+
+.intro {
+  padding: 28px 32px;
+  border-bottom: 1px solid var(--border);
+}
+
+.intro h2 {
+  margin: 0 0 5px;
+  font-size: 23px;
+}
+
+.intro p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.required-note {
+  margin-top: 12px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+form {
+  padding: 10px 32px 32px;
+}
+
+.section {
+  padding-top: 25px;
+  margin-top: 12px;
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.section-number {
+  background: #f8efd9;
+  color: #805b17;
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+  display: grid;
+  place-items: center;
+  font-weight: bold;
+}
+
+.section-heading h3 {
+  margin: 0;
+  font-size: 17px;
+}
+
+.section-heading p {
+  margin: 2px 0 0;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px 18px;
+}
+
+.field {
+  min-width: 0;
+}
+
+.full {
+  grid-column: 1 / -1;
+}
+
+label, .group-label {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.required {
+  color: #d64545;
+}
+
+input, select, textarea {
+  width: 100%;
+  min-height: 46px;
+  padding: 11px 12px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  background: #fffdf7;
+  color: var(--text);
+  font: inherit;
+  font-size: 14px;
+  transition: border-color .2s, box-shadow .2s;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 95px;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px #d9a44120;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  width: 17px;
+  min-height: auto;
+  height: 17px;
+  accent-color: #a97922;
+  margin: 0;
+}
+
+.radio-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  padding: 8px 0;
+}
+
+.radio-option, .check-option {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 14px;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+.hint {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+.phone-grid {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 10px;
+}
+
+.actions {
+  margin-top: 32px;
+  padding-top: 25px;
+  border-top: 1px solid var(--border);
+}
+
+.consent {
+  margin-bottom: 22px;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 15px;
+  border: 0;
+  border-radius: 8px;
+  color: #172333;
+  background: var(--gold);
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background .2s, transform .2s;
+}
+
+.submit-btn:hover {
+  background: #e8b955;
+  transform: translateY(-1px);
+}
+
+.privacy {
+  text-align: center;
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 13px;
+}
+
+#success {
+  display: none;
+  padding: 45px 25px;
+  text-align: center;
+}
+
+.success-icon {
+  font-size: 48px;
+}
+
+#success h2 {
+  color: #226b48;
+}
+
+#success p {
+  color: var(--muted);
+}
+
+.back-btn {
+  padding: 12px 20px;
+  background: var(--navy);
+  color: white;
+  border: 0;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 12px;
+  padding: 0 15px 28px;
+}
+
+@media (max-width: 600px) {
+  .hero {
+    padding: 32px 16px 55px;
+  }
+
+  .container {
+    width: calc(100% - 20px);
+  }
+
+  .intro {
+    padding: 23px 19px;
+  }
+
+  form {
+    padding: 8px 19px 24px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 17px;
+  }
+
+  .full {
+    grid-column: auto;
+  }
+
+  .section {
+    padding-top: 17px;
+  }
+
+  .phone-grid {
+    grid-template-columns: 100px 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="hero">
+  <img class="brand-logo" src="logo.png" alt="AKGS Kalari Sangam Logo" width="170" height="170">
+  <div class="tag">DISCIPLINE · STRENGTH · TRADITION</div>
+  <h1>AKGS KALARI SANGAM</h1>
+  <p>Official Student Admission Registration</p>
+</header>
+
+<main class="container">
+<div class="form-card">
+
+  <div class="intro" id="formIntro">
+    <h2>Admission Form</h2>
+    <p>Please complete the details below to register as a student.</p>
+    <div class="required-note">
+      Fields marked <span class="required">*</span> are required.
+    </div>
+  </div>
+
+  <form id="admissionForm">
+
+    <section class="section">
+      <div class="section-heading">
+        <div class="section-number">01</div>
+        <div>
+          <h3>Personal Information</h3>
+          <p>Student's basic details</p>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="field">
+          <label for="firstName">First Name <span class="required">*</span></label>
+          <input id="firstName" name="firstName" autocomplete="given-name" required maxlength="60">
+        </div>
+
+        <div class="field">
+          <label for="lastName">Last Name <span class="required">*</span></label>
+          <input id="lastName" name="lastName" autocomplete="family-name" required maxlength="60">
+        </div>
+
+        <div class="field">
+          <label for="dob">Date of Birth <span class="required">*</span></label>
+          <input id="dob" name="dob" type="date" required>
+        </div>
+
+        <div class="field">
+          <label for="gender">Gender <span class="required">*</span></label>
+          <select id="gender" name="gender" required>
+            <option value="">Select gender</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+            <option>Prefer not to say</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="bloodGroup">Blood Group</label>
+          <select id="bloodGroup" name="bloodGroup">
+            <option value="">Select blood group</option>
+            <option>A+</option><option>A-</option>
+            <option>B+</option><option>B-</option>
+            <option>AB+</option><option>AB-</option>
+            <option>O+</option><option>O-</option>
+            <option>Unknown</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="nationality">Nationality</label>
+          <input id="nationality" name="nationality" value="Indian" maxlength="60">
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <div class="section-number">02</div>
+        <div>
+          <h3>Parent / Guardian Details</h3>
+          <p>Contact information for the student's guardian</p>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="field">
+          <label for="guardian">Parent / Guardian Name <span class="required">*</span></label>
+          <input id="guardian" name="guardian" autocomplete="name" required maxlength="100">
+        </div>
+
+        <div class="field">
+          <label for="relationship">Relationship to Student</label>
+          <select id="relationship" name="relationship">
+            <option value="">Select relationship</option>
+            <option>Father</option>
+            <option>Mother</option>
+            <option>Guardian</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="phone">WhatsApp Number <span class="required">*</span></label>
+          <div class="phone-grid">
+            <input name="countryCode" aria-label="Country code" value="+91" required pattern="\+[0-9]{1,4}" title="Enter a country code, such as +91">
+            <input id="phone" name="phone" type="tel" autocomplete="tel-national" required inputmode="numeric" pattern="[0-9]{10}" maxlength="10" placeholder="10-digit number" title="Enter a 10-digit phone number">
+          </div>
+          <div class="hint">Use a number that can receive WhatsApp messages.</div>
+        </div>
+
+        <div class="field">
+          <label for="email">Email Address</label>
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com">
+        </div>
+
+        <div class="field full">
+          <label for="address">Residential Address <span class="required">*</span></label>
+          <textarea id="address" name="address" autocomplete="street-address" required maxlength="500" placeholder="House name/number, locality, town and district"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="emergencyName">Emergency Contact Name</label>
+          <input id="emergencyName" name="emergencyName" maxlength="100">
+        </div>
+
+        <div class="field">
+          <label for="emergencyPhone">Emergency Contact Number</label>
+          <input id="emergencyPhone" name="emergencyPhone" type="tel" inputmode="numeric" pattern="[0-9]{10}" maxlength="10" placeholder="10-digit number">
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <div class="section-number">03</div>
+        <div>
+          <h3>Training Details</h3>
+          <p>Tell us about your Kalari training preferences</p>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="field">
+          <label for="branch">Preferred Branch</label>
+          <input id="branch" name="branch" maxlength="100" placeholder="Enter your preferred branch">
+        </div>
+
+        <div class="field">
+          <label for="referral">How did you hear about us?</label>
+          <select id="referral" name="referral">
+            <option value="">Select an option</option>
+            <option>Family or friend</option>
+            <option>Social media</option>
+            <option>Website or online search</option>
+            <option>Community / event</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="field full">
+          <label for="medical">Medical Conditions, Injuries or Allergies</label>
+          <textarea id="medical" name="medical" maxlength="1000" placeholder="Share anything instructors should know for safe training, or enter None"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="experience">Previous Kalari Experience</label>
+          <select id="experience" name="experience">
+            <option value="">Select an option</option>
+            <option>Beginner - No previous training</option>
+            <option>Some previous training</option>
+            <option>Experienced student</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="batch">Preferred Training Batch</label>
+          <select id="batch" name="batch">
+            <option value="">Select preferred batch</option>
+            <option>Morning</option>
+            <option>Evening</option>
+            <option>Weekend</option>
+            <option>To be discussed</option>
+          </select>
+        </div>
+
+        <div class="field full">
+          <label for="reason">Why do you want to learn Kalari?</label>
+          <textarea id="reason" name="reason" maxlength="500" placeholder="Optional: Tell us about your goals"></textarea>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <div class="section-number">04</div>
+        <div>
+          <h3>Declaration &amp; Consent</h3>
+          <p>Please review before submitting your application</p>
+        </div>
+      </div>
+
+      <div class="consent">
+        <label class="check-option">
+          <input type="checkbox" name="accuracy" required>
+          <span>I confirm that the information provided is accurate. <span class="required">*</span></span>
+        </label>
+      </div>
+
+      <div class="consent">
+        <label class="check-option">
+          <input type="checkbox" name="rules" required>
+          <span>I agree to follow the Kalari Sangam's training rules and safety instructions. <span class="required">*</span></span>
+        </label>
+      </div>
+
+      <div class="consent">
+        <label class="check-option">
+          <input type="checkbox" name="guardianConsent" required>
+          <span>For applicants under 18, a parent or legal guardian has reviewed and approved this application. <span class="required">*</span></span>
+        </label>
+      </div>
+    </section>
+
+    <div class="actions">
+      <button type="submit" class="submit-btn">Submit Admission Application &rarr;</button>
+      <p class="privacy">Please submit only information needed for admission. Your details should be handled securely by the Sangam.</p>
+    </div>
+  </form>
+
+  <div id="success" role="status" aria-live="polite">
+    <div class="success-icon">✓</div>
+    <h2>Form Validated Successfully!</h2>
+    <p id="successMessage">Your information passed the form validation.</p>
+    <p><strong>Important:</strong> This demo has not sent or saved your application. Please contact the Sangam to complete registration.</p>
+    <button class="back-btn" id="backBtn" type="button">Back to Form</button>
+  </div>
+
+</div>
+</main>
+
+<footer>
+  AKGS KALARI SANGAM · Preserving Tradition, Building Strength
+</footer>
+
+<script>
+const form = document.getElementById("admissionForm");
+const dob = document.getElementById("dob");
+const phone = document.getElementById("phone");
+const emergencyPhone = document.getElementById("emergencyPhone");
+const success = document.getElementById("success");
+
+dob.max = new Date().toISOString().split("T")[0];
+
+function validatePhone(input) {
+  input.setCustomValidity("");
+
+  if (input.value && !/^[0-9]{10}$/.test(input.value)) {
+    input.setCustomValidity("Please enter a valid 10-digit phone number.");
+  }
+}
+
+phone.addEventListener("input", () => validatePhone(phone));
+emergencyPhone.addEventListener("input", () => validatePhone(emergencyPhone));
+
+form.addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  validatePhone(phone);
+  validatePhone(emergencyPhone);
+
+  if (!form.reportValidity()) return;
+
+  const firstName = document.getElementById("firstName").value.trim();
+
+  document.getElementById("successMessage").textContent =
+    "Thank you, " + firstName +
+    ". The form passed validation. Your application has not been sent.";
+
+  form.style.display = "none";
+  document.getElementById("formIntro").style.display = "none";
+  success.style.display = "block";
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+document.getElementById("backBtn").addEventListener("click", function() {
+  success.style.display = "none";
+  form.style.display = "block";
+  document.getElementById("formIntro").style.display = "block";
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+</script>
+
+</body>
+</html>
